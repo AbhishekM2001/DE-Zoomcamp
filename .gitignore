@@ -15,4 +15,4 @@
 serving_dir
 .ipynb_checkpoints/
 !week_6_stream_processing/avro_example/data/rides.csv
-1-Docker_SQL\Terraform Keys.json1-Docker_SQL/Terraform Keys.json
+1-Docker_SQL/Terraform Keys.json
