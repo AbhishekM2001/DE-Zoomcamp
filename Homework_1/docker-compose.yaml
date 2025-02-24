@@ -1,0 +1,63 @@
+services:
+  db:
+    container_name: postgres
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB: 'ny_taxi'
+    ports:
+      - '5433:5432'
+    volumes:
+      - vol-pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "pgadmin@pgadmin.com"
+      PGADMIN_DEFAULT_PASSWORD: "pgadmin"
+    ports:
+      - "8080:80"
+    volumes:
+      - vol-pgadmin_data:/var/lib/pgadmin  
+
+volumes:
+  vol-pgdata:
+    name: vol-pgdata
+  vol-pgadmin_data:
+    name: vol-pgadmin_data
+
+# Taxi Dataset download URL
+# URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-10.csv.gz"   
+
+# Zones dataset download URL
+# URL2= "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_zone_lookup.csv"
+
+# Command used to build new image on ingestion script (above command)
+# docker build -t homework1_taxi_ingest:v1 .
+
+# commmand to run the ingestion script image using docker-compose
+# docker run -it \
+# --network=homework_1_default \
+# homework1_taxi_ingest:v1 \
+# --user=postgres \
+# --password=postgres \
+# --host=db \
+# --port=5432 \
+# --db=ny_taxi \
+# --table_name=green_taxi_data_h1 \
+# --url=${URL}
+
+# commmand to run the ingestion script image for zones data using docker-compose
+# docker run -it \
+# --network=homework_1_default \
+# homework1_taxi_ingest:v1 \
+# --user=postgres \
+# --password=postgres \
+# --host=db \
+# --port=5432 \
+# --db=ny_taxi \
+# --table_name=zones_h1 \
+# --url=${URL2}
+

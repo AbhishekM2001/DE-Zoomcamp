@@ -1,0 +1,25 @@
+**/*.csv
+.DS_Store
+.idea
+*.tfstate
+*.tfstate.*
+**/.terraform
+**.terraform
+**.terraform.lock.*
+**google_credentials.json
+**logs/
+**.env
+**__pycache__/
+.history
+**/ny_taxi_postgres_data/*
+serving_dir
+.ipynb_checkpoints/
+!week_6_stream_processing/avro_example/data/rides.csv
+1-Docker_SQL/Terraform Keys.json
+Homework_4/DBT_Keys.json
+Homework_4\Green_taxi_data
+Homework_4\Yellow_taxi_data
+Homework_4\FHV_taxi_data
+!Homework_4\Green_taxi_data\download_data.sh
+!Homework_4\Yellow_taxi_data\download_data.sh
+!Homework_4\FHV_taxi_data\download_data.sh
